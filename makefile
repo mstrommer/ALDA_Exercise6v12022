@@ -13,12 +13,12 @@ all: clean test
 %.o: %.cpp $(DEPS)
 	$(CXX) -c -o $@ $< $(CPPFLAGS)
 
-exercise5: $(OBJ)
+exercise6: $(OBJ)
 	$(CXX) -o $@ $^ $(CPPFLAGS)
 
-test: exercise5
+test: exercise6
 	# executes all tests
-	./exercise5
+	./exercise6
 
 clean:
-	rm -f exercise5
+	rm -f exercise6

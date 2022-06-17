@@ -48,6 +48,12 @@ int setup(int* size) {
     return 0;
 }
 
+int compareByStationName(element* a, element* b){
+    element *element_a = (element*) a;
+    element *element_b = (element*) b;
+    return strcmp(element_a->station_name, element_b->station_name);
+}
+
 // =====================
 // Sorting Testcases
 // ---------------------
@@ -56,7 +62,9 @@ TEST_CASE("Test1", "selectionSort")
 {
     int error = false;
     int i;
-    setup(&size);
+    INFO("Testing if station.csv can be opened.");
+    REQUIRE(setup(&size)==0);
+    INFO("station.csv could be opened.");
     selection_sort(stations, size);
     for (i = 0; i < size - 1; i++)
     {
@@ -74,7 +82,9 @@ TEST_CASE("Test2", "mergeSort")
 {
     int error = false;
     int i;
-    setup(&size);
+    INFO("Testing if station.csv can be opened.");
+    REQUIRE(setup(&size)==0);
+    INFO("station.csv could be opened.");
     merge_sort(stations, tmpStations, 0, size-1);
     for (i = 0; i < size - 1; i++)
     {
@@ -91,7 +101,9 @@ TEST_CASE("Test3", "selectionSortFP")
 {
     int error = false;
     int i;
-    setup(&size);
+    INFO("Testing if station.csv can be opened.");
+    REQUIRE(setup(&size)==0);
+    INFO("station.csv could be opened.");
     selection_sort_fp(stations, size, compareByIcaoCode);
     for (i = 0; i < size - 1; i++)
     {
@@ -101,5 +113,24 @@ TEST_CASE("Test3", "selectionSortFP")
         }
     }
     INFO("Test Case for SelectionSort using Function Pointer: some elements are not sorted correctly (" << i << ":" << stations[i].icao_code << " > " << i + 1 << ":" << stations[i + 1].icao_code << ")!");
+    REQUIRE(error == false);
+}
+
+TEST_CASE("Test4", "selectionSortFP")
+{
+    int error = false;
+    int i;
+    INFO("Testing if station.csv can be opened.");
+    REQUIRE(setup(&size)==0);
+    INFO("station.csv could be opened.");
+    selection_sort_fp(stations, size, compareByStationName);
+    for (i = 0; i < size - 1; i++)
+    {
+        if(strcmp(stations[i].station_name, stations[i + 1].station_name) > 0){
+            error = true;
+            break;
+        }
+    }
+    INFO("Test Case for SelectionSort using Function Pointer: some elements are not sorted correctly (" << i << ":" << stations[i].station_name << " > " << i + 1 << ":" << stations[i + 1].station_name << ")!");
     REQUIRE(error == false);
 }

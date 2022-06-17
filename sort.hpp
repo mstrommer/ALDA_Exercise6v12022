@@ -10,7 +10,7 @@
 
 #include <stdio.h>
 #include <string.h>
-
+#define _CRT_SECURE_NO_WARNINGS
 struct _element {
     char icao_code[5];
     char station_name[100];
