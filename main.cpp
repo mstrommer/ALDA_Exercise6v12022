@@ -66,7 +66,7 @@ int main(int argc, char* const argv[] ){
     
     element* stations; // holds the station codes and names
     element* tmpStations; // holds temporary station codes and names for merge sort
-    int size; // holds the number of valid entries in the array
+    int size; // holds the number of valid entries in the array, will be passed readfile as parameter
         
     stations = (element*)malloc(sizeof(element)*6000);
     tmpStations = (element*)malloc(sizeof(element)*6000);
