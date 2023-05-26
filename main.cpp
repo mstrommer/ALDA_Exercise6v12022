@@ -30,7 +30,7 @@ int readfile(element* stations, int* size) {
     }
     
     // read all weather stations from file and add them to the
-    // hash table
+    // array
     while (fgets(line, 100, fp)) {
         // read one line and skip empty and comment lines
         if (line[0] == '#') continue;

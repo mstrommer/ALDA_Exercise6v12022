@@ -71,6 +71,14 @@ TEST_CASE("Test1", "selectionSort")
             error = true;
             break;
         }
+        if(strcmp(stations[i].icao_code, stations[i + 1].icao_code) == 0){
+            error = true;
+            break;
+        }
+        if(strcmp(stations[i].station_name, "") == 0){
+            error = true;
+            break;
+        }
     }
     INFO("Test Case for SelectionSort: some elements are not sorted correctly (" << i << ":" << stations[i].station_name << " > " << i + 1 << ":" << stations[i + 1].station_name << ")!");
     REQUIRE(error == false);
@@ -88,6 +96,14 @@ TEST_CASE("Test2", "mergeSort")
     for (i = 0; i < size - 1; i++)
     {
         if(strcmp(stations[i].station_name, stations[i + 1].station_name) < 0){
+            error = true;
+            break;
+        }
+        if(strcmp(stations[i].icao_code, stations[i + 1].icao_code) == 0){
+            error = true;
+            break;
+        }
+        if(strcmp(stations[i].station_name, "") == 0){
             error = true;
             break;
         }
@@ -110,6 +126,14 @@ TEST_CASE("Test3", "selectionSortFP")
             error = true;
             break;
         }
+        if(strcmp(stations[i].icao_code, stations[i + 1].icao_code) == 0){
+            error = true;
+            break;
+        }
+        if(strcmp(stations[i].station_name, "") == 0){
+            error = true;
+            break;
+        }
     }
     INFO("Test Case for SelectionSort using Function Pointer: some elements are not sorted correctly (" << i << ":" << stations[i].icao_code << " > " << i + 1 << ":" << stations[i + 1].icao_code << ")!");
     REQUIRE(error == false);
@@ -126,6 +150,14 @@ TEST_CASE("Test4", "selectionSortFP")
     for (i = 0; i < size - 1; i++)
     {
         if(strcmp(stations[i].station_name, stations[i + 1].station_name) > 0){
+            error = true;
+            break;
+        }
+        if(strcmp(stations[i].icao_code, stations[i + 1].icao_code) == 0){
+            error = true;
+            break;
+        }
+        if(strcmp(stations[i].station_name, "") == 0){
             error = true;
             break;
         }
